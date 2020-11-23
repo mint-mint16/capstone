@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block title %}
+    VerifyOTP
+{% endblock %}
+{% block content %}
+    <div class="container">
+        <div class="card mt-4">
+            <div class="card-body">
+                <center>
+                    <h3>Please check your email to verify email</h3>
+                    <input type="hidden" name="fileID" value="{{ id }}">
+                    <form method="POST" action="{% url 'viewonline' %}">
+                        {% csrf_token %}
+                        <input type="text" class="form-control" placeholder="OTP here"
+                               aria-label="OTP"
+                               aria-describedby="addon-wrapping" name="otps">
+                        <button type="submit" class="btn btn-primary btn-sm"> Send</button>
+                    </form>
+
+
+                    <p>Click button to get OTP code via email</p>
+                    <form method="POST" action="{% url 'sendOtp' %}">
+                        {% csrf_token %}
+                        <input type="submit" class="btn btn-info btn-sm"
+                               value="Send OTP">
+                    </form>
+                </center>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+

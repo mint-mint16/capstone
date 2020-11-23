@@ -1,0 +1,56 @@
+{% extends 'baseprofile.html' %}
+{% block title %}
+    Revoke File
+{% endblock %}
+
+{% block content %}
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card ">
+                <div class="card-header">
+                    <h4 class="card-title">Revoke File</h4>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table tablesorter">
+                            <thead class="text-primary">
+                            <tr>
+                                <th>Licensed ID</th>
+                                <th>File name</th>
+                                <th>Downloader</th>
+                                <th class="text-center">Revoke</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for datum in data %}
+
+                                <tr>
+                                <td>{{ datum }}</td>
+                                <td>{{ name }}</td>
+                                {% for foo in downloader %}
+                                    <td>{{ foo }}</td>
+                                {% endfor %}
+
+                                <td class="text-center">
+                                <form method="POST" action="{% url 'revoke' %}">
+                                    {% csrf_token %}
+                                    <input type="hidden" name="filedel" value={{ datum }}>
+                                    <button type="submit" class="btn btn-danger btn-sm" title="Revoke">
+                                        <i class="fa fa-trash"></i></button>
+                                </form>
+
+                            {% endfor %}
+                            </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+

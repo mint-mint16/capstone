@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block title %} Redirecting... {% endblock %}
+{% block content %}
+    <div class="container-fluid mt-5">
+        <center>
+            <iframe src="https://giphy.com/embed/hL9q5k9dk9l0wGd4e0" width="500" height="400" frameBorder="0"
+                    class="giphy-embed" allowFullScreen></iframe>
+        </center>
+    </div>
+    <script type="text/javascript">
+        setTimeout(function () {
+            window.location.href = "/";
+        }, 5500);
+    </script>
+
+{% endblock %}
